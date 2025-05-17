@@ -1,33 +1,70 @@
 /* make sure the map fill the screen */
 html,
 body {
-  margin: 0;
-  padding: 5;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+    margin: 0;
+    padding: 5;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
 }
 
 #map {
-  width: 100%; /* Adjust width to your desired size */
-  height: 100%; /* Adjust height to your desired size */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for effect */
-  border-radius: 8px; /* Optional: rounded corners */
+    width: 100%;
+    /* Adjust width to your desired size */
+    height: 100%;
+    /* Adjust height to your desired size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Optional: subtle shadow for effect */
+    border-radius: 8px;
+    /* Optional: rounded corners */
 }
 
 #map svg {
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+svg circle,
+.legend > div {
+    --color-departures: steelblue;
+    --color-arrivals: darkorange;
+    --color: color-mix(in oklch,
+        var(--color-departures) calc(100% * var(--departure-ratio)),
+        var(--color-arrivals));
 }
 
 svg circle {
-  fill: steelblue;
-  fill-opacity: 0.7;
-  stroke: white;
-  pointer-events: auto;
+    fill: var(--color);
+    fill-opacity: 0.7;
+    stroke: white;
+    pointer-events: auto;
+}
+
+.legend {
+    display: flex;
+    gap: 1rem;
+    margin-block: 1rem;
+    width: 100%; /* Match map width */
+    position: center;
+    bottom: 1rem;
+    left: 0;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    justify-content: center; /* Center legend items inside full width */
+}
+
+.legend > div {
+    flex: 1;
+    text-align: center;
+    background-color: var(--color);
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
 }

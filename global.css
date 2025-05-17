@@ -8,3 +8,25 @@ body {
   margin: auto;
   padding: 1em;
 }
+
+header {
+  display: flex;
+  gap: 1em;
+  align-items: baseline;
+  width: 100%;
+}
+
+#time-filter {
+  margin-left: auto;
+}
+
+#selected-time,
+#any-time {
+  display: block;
+  margin-top: 0.25em;
+}
+
+#any-time {
+  color: gray;
+  font-style: italic;
+}
